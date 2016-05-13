@@ -49,10 +49,13 @@
 
   end
 
-  regex = RegexTester.new
-  regex.pattern = /^(http:\/\/)?www\.\w+\.(com|edu|org)$/  # from test_arrays.rb
+  # regex = RegexTester.new
+  # regex.pattern = /^(http:\/\/)?www\.\w+\.(com|edu|org)$/  # from test_arrays.rb
+  # emails = %w[http://www.google.com apidock.com www.microsoft.com http://www.heimann-family.org http://www.kli.org http://www.acac.net http://www.cmu.edu http://is.hss.cmu.edu www.amazon.co.uk]
+  # regex.statements = emails
+  # regex.test
 
-
-  emails = %w[http://www.google.com apidock.com www.microsoft.com http://www.heimann-family.org http://www.kli.org http://www.acac.net http://www.cmu.edu http://is.hss.cmu.edu www.amazon.co.uk]
-  regex.statements = emails
-  regex.test
+  cc = RegexTester.new
+  cc.statements = %w[1234567890123456 1234-5678-9012-3456 1234\ 5678\ 9012\ 3456 1234567890 #1234567890123456 1234|5678|9012|3456 12345678901234567]
+  cc.pattern = /^\d{16}$/
+  cc.test
