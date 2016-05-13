@@ -27,10 +27,12 @@
     end
 
 	def test
-		if pattern_matches? @statement
-		  puts "MATCH: #{@statement}"
-		else
-		  STDERR.puts "NO MATCH: #{@statement}"
+		@statements.each do |s|
+			if pattern_matches? s
+			  puts "MATCH: #{s}"
+			else
+			  STDERR.puts "NO MATCH: #{s}"
+			end
 		end
 	end 
 
@@ -40,15 +42,17 @@
 		statement.match(@pattern) != nil
 	end
 
+	 def add_insult
+	    STDERR.puts "-------------------------------------"
+	    STDERR.puts "As a coding infidel, you are hereby sentenced to death.  The firing squad will be here shortly to carry out the execution.  Please remain seated until they arrive. Thank you for your cooperation."   
+	  end
+
   end
 
   regex = RegexTester.new
   regex.pattern = /^(http:\/\/)?www\.\w+\.(com|edu|org)$/  # from test_arrays.rb
-  puts regex.pattern
-  regex.statement = "http://www.google.com"
-  puts regex.statement
 
-  puts "------"
-  regex.test
-  regex.statement = "apidock.com"
+
+  emails = %w[http://www.google.com apidock.com www.microsoft.com http://www.heimann-family.org http://www.kli.org http://www.acac.net http://www.cmu.edu http://is.hss.cmu.edu www.amazon.co.uk]
+  regex.statements = emails
   regex.test
